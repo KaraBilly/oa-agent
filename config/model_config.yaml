@@ -1,19 +1,29 @@
 # OA Agent 模型配置文件
-# 版本: v2.0
+# 版本: v3.0
 
 # 默认模型设置
 default_model:
-  provider: deepseek
-  model_name: deepseek-chat
+  provider: xunfei
+  model_name: spark-latest
   temperature: 0.7
   max_tokens: 1000
 
 # 可用模型列表
 models:
+  - name: spark-latest
+    provider: xunfei
+    description: 科大讯飞星火模型（默认）
+    enabled: true
+    
+  - name: spark-v3.5
+    provider: xunfei
+    description: 科大讯飞星火v3.5模型
+    enabled: false
+    
   - name: deepseek-chat
     provider: deepseek
-    description: DeepSeek Chat模型（推荐生产环境）
-    enabled: true
+    description: DeepSeek Chat模型
+    enabled: false
     
   - name: deepseek-coder
     provider: deepseek
@@ -37,13 +47,15 @@ models:
 
 # 意图类型到模型的映射
 intent_model_mapping:
-  leave_request: deepseek-chat
-  leave_query: deepseek-chat
-  leave_withdraw: deepseek-chat
-  other: deepseek-chat
+  leave_request: spark-latest
+  leave_query: spark-latest
+  leave_withdraw: spark-latest
+  other: spark-latest
 
 # 模型优先级（当多个模型可用时）
 model_priority:
+  - spark-latest
+  - spark-v3.5
   - deepseek-chat
   - mock-v1
   - gpt-4

@@ -99,6 +99,11 @@ class LLMClientManager:
                 from oa_agent_v2 import MockModelClient
                 return MockModelClient(model_name=model_name)
             
+            elif provider == "xunfei":
+                # 科大讯飞客户端
+                from config.xunfei_client import create_xunfei_client
+                return create_xunfei_client(model_name)
+            
             else:
                 print(f"未知的provider: {provider}")
                 return None
