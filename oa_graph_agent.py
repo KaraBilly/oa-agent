@@ -93,8 +93,13 @@ class IntentionRecognizer:
             "假期": IntentType.LEAVE_REQUEST,
             "请假记录": IntentType.LEAVE_QUERY,
             "用了几天年假": IntentType.LEAVE_QUERY,
+            "用了多少假": IntentType.LEAVE_QUERY,
             "请假状态": IntentType.LEAVE_QUERY,
             "查询请假": IntentType.LEAVE_QUERY,
+            "查一下请假": IntentType.LEAVE_QUERY,
+            "查请假": IntentType.LEAVE_QUERY,
+            "帮我查": IntentType.LEAVE_QUERY,
+            "请帮我查": IntentType.LEAVE_QUERY,
             "撤回请假": IntentType.LEAVE_WITHDRAW,
             "取消请假": IntentType.LEAVE_WITHDRAW,
             "撤回": IntentType.LEAVE_WITHDRAW,
@@ -165,10 +170,18 @@ class IntentionRecognizer:
         )
     
     def _recognize_main_intent(self, text: str) -> IntentType:
-        """识别主意图 - 按优先级匹配"""
-        for keyword, intent in self.leave_keywords.items():
+        """识别主意图 - 按优先级匹配，优先匹配更长的关键字"""
+        # 先按关键字长度排序，优先匹配更长的关键字
+        sorted_keywords = sorted(self.leave_keywords.items(), key=lambda x: len(x[0]), reverse=True)
+        
+        for keyword, intent in sorted_keywords:
             if keyword in text:
                 return intent
+        
+        # 特殊情况：查询意图
+        if any(q in text for q in ["查询", "查一下", "查查", "看看", "多少"]):
+            if "假" in text or "请假" in text:
+                return IntentType.LEAVE_QUERY
         
         if "请假" in text or "休假" in text or "假" in text:
             return IntentType.LEAVE_REQUEST
