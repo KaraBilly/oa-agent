@@ -208,5 +208,22 @@
 
 ---
 
+## 🚀 GitHub Issue列表
+
+| Issue # | 标题 | 优先级 | 状态 | 文档 |
+|---------|------|--------|------|------|
+| #1 | 真实数据源对接 | P0 | 待开发 | [issue-1-data-source.md](./issues/issue-1-data-source.md) |
+| #2 | 多轮对话状态追踪 | P1 | 待开发 | [issue-2-multi-turn-dialogue.md](./issues/issue-2-multi-turn-dialogue.md) |
+| #3 | 附件OCR处理 | P1 | 待开发 | [issue-3-ocr.md](./issues/issue-3-ocr.md) |
+| #4 | 消息推送集成 | P1 | 待开发 | [issue-4-message-push.md](./issues/issue-4-message-push.md) |
+| #5 | 测试覆盖率提升 | P0 | 待开发 | [issue-5-test-coverage.md](./issues/issue-5-test-coverage.md) |
+| #6 | 配置文件完善 | P1 | 待开发 | [issue-6-config-files.md](./issues/issue-6-config-files.md) |
+| #7 | 审计日志功能 | P1 | 待开发 | [issue-7-audit-logs.md](./issues/issue-7-audit-logs.md) |
+| #8 | 权限管理模块 | P1 | 待开发 | [issue-8-permission.md](./issues/issue-8-permission.md) |
+| #9 | 性能优化 | P2 | 待开发 | [issue-9-performance.md](./issues/issue-9-performance.md) |
+| #10 | 文档完善 | P2 | 待开发 | [issue-10-docs.md](./issues/issue-10-docs.md) |
+
+---
+
 **Issue创建时间**: 2026-10-02  
 **最后更新**: 2026-10-02
