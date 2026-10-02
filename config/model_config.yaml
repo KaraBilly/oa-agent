@@ -1,0 +1,51 @@
+# OA Agent 模型配置文件
+# 版本: v2.0
+
+# 默认模型设置
+default_model:
+  provider: deepseek
+  model_name: deepseek-chat
+  temperature: 0.7
+  max_tokens: 1000
+
+# 可用模型列表
+models:
+  - name: deepseek-chat
+    provider: deepseek
+    description: DeepSeek Chat模型（推荐生产环境）
+    enabled: true
+    
+  - name: deepseek-coder
+    provider: deepseek
+    description: DeepSeek Coder模型
+    enabled: false
+    
+  - name: mock-v1
+    provider: mock
+    description: Mock模型，用于开发测试
+    enabled: false
+    
+  - name: gpt-4
+    provider: openai
+    description: OpenAI GPT-4模型
+    enabled: false
+    
+  - name: claude-3-opus
+    provider: anthropic
+    description: Anthropic Claude 3 Opus模型
+    enabled: false
+
+# 意图类型到模型的映射
+intent_model_mapping:
+  leave_request: deepseek-chat
+  leave_query: deepseek-chat
+  leave_withdraw: deepseek-chat
+  other: deepseek-chat
+
+# 模型优先级（当多个模型可用时）
+model_priority:
+  - deepseek-chat
+  - mock-v1
+  - gpt-4
+  - claude-3-opus
+  - gpt-3.5-turbo
